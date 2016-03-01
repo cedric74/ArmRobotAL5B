@@ -1,0 +1,49 @@
+* Before to use the functions of the beh_BBB_gpio.c, call beh_BBB_gpio_init to map the gpio 
+beh_BBB_gpio_init()
+
+
+* To change the direction of one Pin:
+beh_BBB_gpio_conf_dir(GPIO_Pins ePin, unsigned char u8Dir);
+ePin -> enum : PX_Y (X = 8 or 9  and y [0-46])
+u8Dir -> OUTPUT or INPUT
+
+Example, set pin P9_15 to ouput:  
+beh_BBB_gpio_conf_dir( P9_15, OUTPUT);
+
+
+* To change the value of one Pin:
+void beh_BBB_gpio_WritePin(GPIO_Pins ePin, unsigned char u8Val );
+ePin -> enum : PX_Y (X = 8 or 9  and y [0-46])
+u8Val -> 1 or 0
+
+Example, set High to the pin P9_15 :  
+beh_BBB_gpio_WritePin( P9_15 , 1);
+
+
+* To Read the value of one Pin:
+unsigned char beh_BBB_gpio_ReadPin(GPIO_Pins ePin );
+ePin -> enum : PX_Y (X = 8 or 9  and y [0-46])
+return value : Value of the pin (1 or 0)
+ 
+Example, read the pin P9_15 :  
+unsigned char u8Value = beh_BBB_gpio_ReadPin( P9_15 1);
+
+
+* To Set multi pin configuration :
+void beh_BBB_gpio_Conf_ALL_GPIO(GPIO_Pins ePin, unsigned char u8Dir, unsigned char u8Number){
+ePin -> enum : PX_Y (X = 8 or 9  and y [0-46]), First Pin, the pin must to be consecutive 
+u8Dir -> OUTPUT or INPUT
+u8Number -> Number of Pin to set
+
+/... To complete 
+
+... /
+
+
+* If you have a Bus Error : 
+Try to export the pin gpio in console command:
+root@beaglebone#echo X > /sys/class/gpio/export
+X = ( GPIO[PORT] * 32 ) + num pin
+
+example : GPIO3_20 = (3 * 32 ) + 20 =  116
+ 
