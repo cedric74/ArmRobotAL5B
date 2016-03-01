@@ -17,6 +17,8 @@
 /*******************************************
 *   T Y P E D E F   &  C O N S T A N T E   *
 ********************************************/
+#define		DELAYS_500_MS				500000	// in us,
+
 
 // Example Pince
 ePwm servoM1 =  	PWM_P8_13;
@@ -54,9 +56,29 @@ void Control_Servo_init(){
  Description  :
  ============================================
  */
-void Control_Servo_Rotate(eServo_Rotate valueRotate){
+void Control_Servo_Rotate(){
 
 	// Turn Servo to Center Position
-	Lib_Servo_Control(servoM1, CENTER);
+	Lib_pwm_control(servoM1, PERIOD_20_MS, 1450000);
+
+	usleep(DELAYS_500_MS);
+
+	Lib_pwm_control(servoM1, PERIOD_20_MS, 2250000);
+
+	usleep(DELAYS_500_MS);
+
+	Lib_pwm_control(servoM1, PERIOD_20_MS, 1450000);
+
+
+	usleep(DELAYS_500_MS);
+
+	Lib_pwm_control(servoM1, PERIOD_20_MS, 625000);
+
+	usleep(DELAYS_500_MS);
+
+
+	Lib_pwm_control(servoM1, PERIOD_20_MS, 1450000);
+
+
 
 }

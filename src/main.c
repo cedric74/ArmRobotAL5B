@@ -49,6 +49,7 @@ int main(int argc, char *argv[])
 	do{
 		//
 		// ...
+		Control_Servo_Rotate();
 
 		// Sleep
 		usleep(TICK_LOOP_MAIN_1_S);
@@ -73,4 +74,8 @@ void Init(){
 
 	// Start WatchDog
 	watch_dog_start();
+
+	// init Control Servo
+	Control_Servo_init();
+
 }

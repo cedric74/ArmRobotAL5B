@@ -31,6 +31,8 @@ const char strsPwmControl[Number_Pwm][BUFFER_SIZE]={
 		PATH_P9_21,
 		PATH_P9_42,
 };
+
+int iTabOffset[Number_Pwm]={0};
 /*******************************************
 *	 G L O B A L   V A R I A B L E S  	   *
 ********************************************/
@@ -61,7 +63,7 @@ int Lib_pwm_init(ePwm pwm){
 	strcat(buffer, strsInitBonePwm[pwm]);
 	strcat(buffer," > /sys/devices/bone_capemgr.9/slots");
 
-	printf("\n Test Init : %s \n", buffer);
+	printf("\n %s \n", buffer);
 	system(buffer);
 
 	// Wait Time to Load The Cape Into The Slots
@@ -73,7 +75,7 @@ int Lib_pwm_init(ePwm pwm){
 
 		// Convert Integer to String
 		char str[2];
-		sprintf(str, "%d", iOffset);
+		sprintf(str, ".%d", iOffset);
 		strcat(cPath,str);
 
 		// Copy  Path
@@ -96,6 +98,8 @@ int Lib_pwm_init(ePwm pwm){
 		printf("\n Test : %s \n", buffer);
 	}while(fd < 0);
 
+	// Save Offset
+	iTabOffset[pwm] = iOffset-1;
 
 	// Run -> 0
 	sprintf(buffer, "%d", 0);
@@ -141,6 +145,18 @@ int Lib_pwm_start(ePwm pwm){
 	// Get Path
 	snprintf(cPath, BUFFER_SIZE, strsPwmControl[pwm]);
 
+	// Set Offset
+
+	if( iTabOffset[pwm] > 0){
+		// Convert Integer to String
+		char str[3];
+		sprintf(str, ".%d", iTabOffset[pwm]);
+		strcat(cPath,str);
+	}else{
+		// Error
+		return 0;
+	}
+
 	// ----- Echo 1 > RUN
 	snprintf(buffer, BUFFER_SIZE, cPath);
 	strcat(buffer,PATH_RUN);
@@ -178,8 +194,19 @@ int Lib_pwm_control(ePwm pwm, int iPeriod, int iDuty )
 	// Instructions
 
 	// Get the path
-	snprintf(buffer, BUFFER_SIZE, cPath);
+	snprintf(cPath, BUFFER_SIZE, strsPwmControl[pwm]);
 
+	// Set Offset
+	if( iTabOffset[pwm] > 0){
+		// Convert Integer to String
+		char str[2];
+		sprintf(str, ".%d", iTabOffset[pwm]);
+		strcat(cPath,str);
+	}else{
+		// Error
+		return 0;
+	}
+	snprintf(buffer, BUFFER_SIZE, cPath);
 	// ----- Echo value > PERIOD
 	strcat(buffer,PATH_PERIOD);
 	fd = open(buffer, O_WRONLY);
@@ -230,6 +257,21 @@ int Lib_pwm_stop(ePwm pwm){
 
 
 	// Instructions
+
+	// Get Path
+	snprintf(cPath, BUFFER_SIZE, strsPwmControl[pwm]);
+
+	// Set Offset
+	if( iTabOffset[pwm] > 0){
+		// Convert Integer to String
+		char str[2];
+		sprintf(str, ".%d", iTabOffset[pwm]);
+		strcat(cPath,str);
+	}else{
+		// Error
+		return 0;
+	}
+
 	// ----- Echo 0 > RUN
 	snprintf(buffer, BUFFER_SIZE, cPath);
 	strcat(buffer,PATH_RUN);

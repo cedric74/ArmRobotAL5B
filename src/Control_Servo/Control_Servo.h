@@ -24,6 +24,6 @@
 *               D E F I N E                *
 ********************************************/
 void 	Control_Servo_init();
-void 	Control_Servo_Rotate(eServo_Rotate valueRotate);
+void 	Control_Servo_Rotate();
 
 #endif /* CONTROL_SERVO_CONTROL_SERVO_H_ */
