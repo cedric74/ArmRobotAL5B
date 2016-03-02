@@ -18,7 +18,7 @@
 *   T Y P E D E F   &  C O N S T A N T E   *
 ********************************************/
 #define		DELAYS_500_MS				500000	// in us,
-
+#define		DELAYS_5_S				   5000000	// in us,
 
 // Example Pince
 ePwm servoM1 =  	PWM_P8_13;
@@ -33,6 +33,7 @@ ePwm servoM1 =  	PWM_P8_13;
 /*******************************************
 *	        F U N C T I O N S   	       *
 ********************************************/
+static int Control_Servo_Calcul(int iAngle);
 
 /*
  ============================================
@@ -78,7 +79,36 @@ void Control_Servo_Rotate(){
 
 
 	Lib_pwm_control(servoM1, PERIOD_20_MS, 1450000);
+//
+	// ------
+//	Lib_pwm_control(servoM1, PERIOD_20_MS, Control_Servo_Calcul(90));
+//
+//	usleep(DELAYS_500_MS);
+//
+//	Lib_pwm_control(servoM1, PERIOD_20_MS, Control_Servo_Calcul(0));
+//
+//	usleep(DELAYS_500_MS);
+//
+//	Lib_pwm_control(servoM1, PERIOD_20_MS, Control_Servo_Calcul(90));
+//
+//	usleep(DELAYS_500_MS);
+//
+//	Lib_pwm_control(servoM1, PERIOD_20_MS, Control_Servo_Calcul(180));
 
+}
 
+/*
+ ============================================
+ Function     : Control_Servo_Calcul()
+ Parameter    :
+ Return Value : void
+ Description  :
+ ============================================
+ */
+static int Control_Servo_Calcul(int iAngle){
+	// y = 812500x - 183333
+	int iReturn = ((812500 * iAngle) - 183333);
+	printf("Value = %i\n", iReturn);
+	return iReturn;
 
 }
