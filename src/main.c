@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 		Control_Servo_Rotate();
 
 		// Sleep
-		usleep(TICK_LOOP_MAIN_1_S);
+		usleep(5000000);
 
 	}while(1);
 

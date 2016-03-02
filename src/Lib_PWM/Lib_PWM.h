@@ -34,11 +34,13 @@
 #define		BONE_P8_13			"bone_pwm_P8_13"
 #define		BONE_P9_14			"bone_pwm_P9_14"
 #define		BONE_P9_21			"bone_pwm_P9_21"
+#define		BONE_P9_31			"bone_pwm_P9_31"
 #define		BONE_P9_42			"bone_pwm_P9_42"
 
 #define		PATH_P8_13			"/sys/devices/ocp.3/pwm_test_P8_13"
 #define		PATH_P9_14			"/sys/devices/ocp.3/pwm_test_P9_14"
 #define		PATH_P9_21			"/sys/devices/ocp.3/pwm_test_P9_21"
+#define		PATH_P9_31			"/sys/devices/ocp.3/pwm_test_P9_31"
 #define		PATH_P9_42			"/sys/devices/ocp.3/pwm_test_P9_42"
 
 #define 	PATH_POLARITY  		"/polarity"
@@ -70,8 +72,9 @@ typedef enum {
 	PWM_P8_13  = 0,
 	PWM_P9_14  = 1,
 	PWM_P9_21  = 2,
-	PWM_P9_42  = 3,
-	Number_Pwm = 4,
+	PWM_P9_31  = 3,
+	PWM_P9_42  = 4,
+	Number_Pwm = 5,
 }ePwm;
 
 /*******************************************
