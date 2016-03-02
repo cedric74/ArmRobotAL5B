@@ -21,8 +21,6 @@
 #define		DELAYS_1_S				   1000000	// in us,
 #define		DELAYS_5_S				   5000000	// in us,
 
-#define    NUMBER_SERVO					5
-
 typedef struct{
 	ePwm pwm;
 	int iMin;
@@ -33,11 +31,11 @@ typedef struct{
 
 sServo sTabServo[]={
 //			     Pwm, Min Val,  Max Value,    Ax,      B
-/* M0 */{  PWM_P8_13,       0,			0,     0,      0},
-/* M1 */{  PWM_P8_13,  625000,    2250000, 	9027, 629167},
-/* M2 */{  PWM_P8_13,       0,			0,     0,      0},
-/* M3 */{  PWM_P8_13,       0,			0,     0,      0},
-/* M4 */{  PWM_P8_13,       0,			0,     0,      0},
+/* M0 */{  PWM_P8_13,  625000,    2250000, 	9027, 629167},
+/* M1 */{  PWM_P9_31,  625000,    2250000, 	9027, 629167},
+/* M2 */{  PWM_P9_31,       0,			0,     0,      0},
+/* M3 */{  PWM_P9_31,       0,			0,     0,      0},
+/* M4 */{  PWM_P9_31,       0,			0,     0,      0},
 };
 
 // m1   00D = 2250000
@@ -62,8 +60,9 @@ int Control_Servo_GetPulseValue(eServo servo, int iAngle);
  */
 void Control_Servo_init(){
 
-	// Init Servo Pince
+	// Init Servo
 	Lib_Servo_init(sTabServo[Servo_M1].pwm);
+	Lib_Servo_init(sTabServo[Servo_M0].pwm);
 }
 
 /*
@@ -79,10 +78,12 @@ void Control_Servo_Rotate(){
 	// Test Servo 1
 	int iCurrentAngle = 0;
 	Lib_pwm_control(sTabServo[Servo_M1].pwm, PERIOD_20_MS, Control_Servo_GetPulseValue(sTabServo[Servo_M1].pwm, iCurrentAngle));
+	Lib_pwm_control(sTabServo[Servo_M0].pwm, PERIOD_20_MS, Control_Servo_GetPulseValue(sTabServo[Servo_M0].pwm, iCurrentAngle));
 	usleep(DELAYS_1_S);
 	int i = 0;
 	for(i = 0; iCurrentAngle<= 180; i++){
 		Lib_pwm_control(sTabServo[Servo_M1].pwm, PERIOD_20_MS, Control_Servo_GetPulseValue(sTabServo[Servo_M1].pwm, iCurrentAngle));
+		Lib_pwm_control(sTabServo[Servo_M0].pwm, PERIOD_20_MS, Control_Servo_GetPulseValue(sTabServo[Servo_M0].pwm, iCurrentAngle));
 		iCurrentAngle += 10;
 		usleep(DELAYS_500_MS);
 	};
@@ -109,5 +110,4 @@ int Control_Servo_GetPulseValue(eServo servo, int iAngle){
 		return sTabServo[Servo_M1].iMax;
 	}
 	return iReturn;
-
 }

@@ -22,6 +22,7 @@ const char strsInitBonePwm[Number_Pwm][BUFFER_SIZE]={
 		BONE_P8_13,
 		BONE_P9_14,
 		BONE_P9_21,
+		BONE_P9_31,
 		BONE_P9_42,
 };
 
@@ -29,6 +30,7 @@ const char strsPwmControl[Number_Pwm][BUFFER_SIZE]={
 		PATH_P8_13,
 		PATH_P9_14,
 		PATH_P9_21,
+		PATH_P9_31,
 		PATH_P9_42,
 };
 
