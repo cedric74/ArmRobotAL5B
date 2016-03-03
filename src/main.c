@@ -48,11 +48,10 @@ int main(int argc, char *argv[])
 	// Main Loop
 	do{
 		//
-		// ...
-		Control_Servo_Rotate();
+		Control_Servo_test();
 
 		// Sleep
-		usleep(5000000);
+		usleep(TICK_LOOP_MAIN_5_S);
 
 	}while(1);
 

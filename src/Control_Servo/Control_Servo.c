@@ -50,13 +50,13 @@ void Control_Servo_init(){
 
 /*
  ============================================
- Function     : Control_Servo_init()
+ Function     : Control_Servo_test()
  Parameter    :
  Return Value : void
  Description  :
  ============================================
  */
-void Control_Servo_Rotate(){
+void Control_Servo_test(){
 
 	Lib_Servo_Control(Servo_M0, 0);
 	Lib_Servo_Control(Servo_M1, 0);
