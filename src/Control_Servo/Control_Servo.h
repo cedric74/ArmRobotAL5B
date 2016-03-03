@@ -17,20 +17,10 @@
 *   T Y P E D E F   &  C O N S T A N T E   *
 ********************************************/
 
-typedef enum {
-	Servo_M0  = 0,
-	Servo_M1  = 1,
-	Servo_M2  = 2,
-	Servo_M3  = 3,
-	Servo_M4  = 4,
-	Number_Servo = 5,
-}eServo;
-
-
 /*******************************************
 *               D E F I N E                *
 ********************************************/
 void 	Control_Servo_init();
-void 	Control_Servo_Rotate();
+void 	Control_Servo_test();
 
 #endif /* CONTROL_SERVO_CONTROL_SERVO_H_ */

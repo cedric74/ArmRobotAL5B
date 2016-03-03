@@ -20,6 +20,7 @@
 
 
 #include "Functions_WatchDog/Functions_WatchDog.h"
+#include "Control_Servo/Control_Servo.h"
 
 /*******************************************
 *               D E F I N E                *
