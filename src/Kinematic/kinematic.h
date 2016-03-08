@@ -32,7 +32,7 @@
 *	 G L O B A L   V A R I A B L E S  	   *
 ********************************************/
 int	d1, a2, a3, d5;
-int	t1, t2, t3, t4, t5;
+double	t1, t2, t3, t4, t5;
 
 double T1_0[4][4];
 double T2_0[4][4];
