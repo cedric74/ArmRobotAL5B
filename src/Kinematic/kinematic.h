@@ -11,6 +11,7 @@
 /*******************************************
 *			  I N C L U D E 			   *
 ********************************************/
+#include <stdio.h>
 #include <math.h>
 
 /*******************************************
@@ -22,11 +23,6 @@
 #define L_M1_M2		120
 #define L_M2_M3		105
 #define L_M4_M5		40
-
-
-/*******************************************
-*   P R O T O T Y P E   F U N C T I O N S  *
-********************************************/
 
 /*******************************************
 *	 G L O B A L   V A R I A B L E S  	   *
@@ -43,7 +39,13 @@ double T5_0[4][4];
 /*******************************************
 *          F U N C T I O N S    		   *
 ********************************************/
+
+// Forward Kinematic
 void Kinematic_init();
 void Kinematic_test();
+
+// Inverse Kinematic
+void IKinematic_init();
+void IKinematic_test();
 
 #endif /* KINEMATIC_KINEMATIC_H_ */
