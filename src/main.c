@@ -45,15 +45,18 @@ int main(int argc, char *argv[])
 	// Init
 	Init();
 
+	// Forward Kinematic
+	Kinematic_test();
+
 	// Main Loop
-	do{
-		//
-		Control_Servo_test();
-
-		// Sleep
-		usleep(TICK_LOOP_MAIN_5_S);
-
-	}while(1);
+//	do{
+//		// Control Servo
+//		Control_Servo_test();
+//
+//		// Sleep
+//		usleep(TICK_LOOP_MAIN_5_S);
+//
+//	}while(1);
 
 	return 0;
 }
