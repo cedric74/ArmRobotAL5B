@@ -40,12 +40,14 @@
 void Control_Servo_init(){
 
 	// Init Servo
+	Lib_Servo_init(Servo_M2);
 	Lib_Servo_init(Servo_M1);
 	Lib_Servo_init(Servo_M0);
 
 	// Init Position Servo
 	Lib_Servo_Control(Servo_M0, 0);
 	Lib_Servo_Control(Servo_M1, 0);
+	Lib_Servo_Control(Servo_M2, 0);
 }
 
 /*
@@ -60,18 +62,22 @@ void Control_Servo_test(){
 
 	Lib_Servo_Control(Servo_M0, 0);
 	Lib_Servo_Control(Servo_M1, 0);
+	Lib_Servo_Control(Servo_M2, 0);
 	usleep(DELAYS_2_S);
 
 	Lib_Servo_Control(Servo_M0, 90);
 	Lib_Servo_Control(Servo_M1, 90);
+	Lib_Servo_Control(Servo_M2, 90);
 	usleep(DELAYS_2_S);
 
 	Lib_Servo_Control(Servo_M0, 180);
 	Lib_Servo_Control(Servo_M1, 180);
+	Lib_Servo_Control(Servo_M2, 180);
 	usleep(DELAYS_2_S);
 
 	Lib_Servo_Control(Servo_M0, 25);
 	Lib_Servo_Control(Servo_M1, 25);
+	Lib_Servo_Control(Servo_M2, 25);
 	usleep(DELAYS_2_S);
 
 }
