@@ -18,9 +18,9 @@
 #include <string.h>
 #include <unistd.h>
 
-
 #include "Functions_WatchDog/Functions_WatchDog.h"
 #include "Control_Servo/Control_Servo.h"
+#include "Kinematic/kinematic.h"
 
 /*******************************************
 *               D E F I N E                *
