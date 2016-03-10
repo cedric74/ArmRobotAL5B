@@ -21,7 +21,6 @@
 ********************************************/
 
 /*******************************************
-*	 G L O B A L   V A R I A B L E S  	   *			
 ********************************************/
 #define	TICK_LOOP_MAIN_500_MS		500000
 #define	TICK_LOOP_MAIN_1_S	   		1000000
@@ -46,7 +45,10 @@ int main(int argc, char *argv[])
 	Init();
 
 	// Forward Kinematic
-	Kinematic_test();
+//	Kinematic_test();
+
+	// Inverse Kinematic
+	IKinematic_test();
 
 	// Main Loop
 //	do{

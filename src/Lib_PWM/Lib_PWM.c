@@ -97,7 +97,7 @@ int Lib_pwm_init(ePwm pwm){
 		fd = open(buffer, O_WRONLY);
 
 
-		printf("\n Test : %s \n", buffer);
+//		printf("\n Test : %s \n", buffer);
 	}while(fd < 0);
 
 	// Save Offset
