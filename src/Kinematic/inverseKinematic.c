@@ -39,6 +39,10 @@ static double theta1, theta2, theta3, theta4, theta5;
 *          F U N C T I O N S    		   *
 ********************************************/
 
+// Define Pose to Test
+//#define		POSE_1	1
+//#define			POSE_2	1
+#define			POSE_3	1
 /*
  ============================================
  Function     : IKinematic_init()
@@ -55,11 +59,11 @@ void IKinematic_init(){
 	 * 		  |	|
 	 * 			|
 	 */
-#if TEST_1
+#if POSE_1
 	nx = 1;		ox = 0;		ax = 0;		px = 105;
 	ny = 0;		oy = -1;	ay = 0;		py = 0;
 	nz = 0;		oz = 0;		az =-1;		pz = 150;
-#else
+#elif POSE_2
 	// Define pose #2
 	/**
 	 *		  |-
@@ -70,6 +74,18 @@ void IKinematic_init(){
 	nx = 1;		ox = 0;		ax = 0;		px = 105;
 	ny = 0;		oy = -1;	ay = 0;		py = 0;
 	nz = 0;		oz = 0;		az =-1;		pz = 230;
+
+#elif POSE_3
+	// Define pose #3
+	/**
+	 *		  |-
+	 *		    |
+	 * 		  	|
+	 * 			|
+	 */
+	nx = 1;		ox = 0;		ax = 0;		px = 160;
+	ny = 0;		oy = -1;	ay = 0;		py = 0;
+	nz = 0;		oz = 0;		az =-1;		pz = 175;
 #endif
 
 }
@@ -140,6 +156,12 @@ void IKinematic_getTheta3(){
 	theta3 = acos(
 			(	pow((px-40*ax),2) + pow((py-40*ay),2) +
 					pow((pz-70-40*az),2) - 25425)/ 25200);
+
+	// Test if Theta3 is real number
+	if (isnan(theta3) != 0){
+//		printf("\ntheta3 radian= %.2f", theta3);
+		theta3 = 0;
+	}
 }
 
 /*
