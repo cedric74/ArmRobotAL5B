@@ -17,6 +17,8 @@
 /*******************************************
 *               D E F I N E                *
 ********************************************/
+#define rad2deg(a) ((a*180)/PI)
+
 #define PI 		3.14159265358979323846
 
 #define L_M0_M1		70
@@ -24,11 +26,20 @@
 #define L_M2_M3		105
 #define L_M4_M5		40
 
+#define X			0
+#define Y			1
+#define Z			2
+
+#define N			0
+#define O			1
+#define A			2
+#define P			3
+
 /*******************************************
 *	 G L O B A L   V A R I A B L E S  	   *
 ********************************************/
 int	d1, a2, a3, d5;
-double	t1, t2, t3, t4, t5;
+float	t1, t2, t3, t4, t5;
 
 double T1_0[4][4];
 double T2_0[4][4];
@@ -43,6 +54,7 @@ double T5_0[4][4];
 // Forward Kinematic
 void Kinematic_init();
 void Kinematic_test();
+void Kinematic_getPosition(double dTabTheta[4], double dPoseMat[4][4]);
 
 // Inverse Kinematic
 void IKinematic_init();
