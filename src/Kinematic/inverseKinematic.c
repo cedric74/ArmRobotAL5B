@@ -44,8 +44,8 @@ static double dTheta_2[5];
 
 // Define Pose to Test
 //#define		POSE_1	1
-//#define			POSE_2	1
-//#define			POSE_3	1
+//#define		POSE_2	1
+//#define		POSE_3	1
 #define			POSE_4	1
 /*
  ============================================

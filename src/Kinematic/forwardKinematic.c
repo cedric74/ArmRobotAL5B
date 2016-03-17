@@ -101,9 +101,7 @@ void Kinematic_getPosition(double dTabTheta[4], double dPoseMat[4][4]){
 //	Kinematic_displayMatrix(T4_0);
 
 
-	// Test Remove Negative Sign
-	printf("\n Before T5_0[i][j]: %f", T5_0[2][3]);
-	printf("\nDisplay T5_0 :");
+	// round Value
 	int i, j;
 	for(i = 0; i < 4 ; i++){
 		for(j = 0; j < 4; j++){
@@ -112,8 +110,6 @@ void Kinematic_getPosition(double dTabTheta[4], double dPoseMat[4][4]){
 			}
 		}
 	}
-	printf("\n After T5_0[i][j]: %f", T5_0[2][3]);
-
 	printf("\nDisplay T5_0 :");
 	Kinematic_displayMatrix(T5_0);
 
@@ -123,9 +119,6 @@ void Kinematic_getPosition(double dTabTheta[4], double dPoseMat[4][4]){
 	{
 		memcpy(&dPoseMat[i], &T5_0[i], sizeof(T5_0[i]));
 	}
-
-//	printf("\nDisplay PoseMat :");
-//	Kinematic_displayMatrix(dPoseMat);
 }
 
 
