@@ -60,6 +60,8 @@ int main(int argc, char *argv[])
 //
 //	}while(1);
 
+
+	printf("\n\n END PROGRAM\n");
 	return 0;
 }
 
