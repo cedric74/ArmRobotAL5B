@@ -24,9 +24,8 @@
 /*******************************************
 *			  I N C L U D E 			   *
 ********************************************/
-#include <stdio.h>
 #include "kinematic.h"
-
+#include <string.h>
 /*******************************************
 *               D E F I N E                *
 ********************************************/
@@ -54,6 +53,74 @@ void initT5_4(double m[4][4]);
 
 void Kinematic_multi(double p[4][4],double q[4][4],double r[4][4]);
 void Kinematic_displayMatrix(double m[4][4]);
+
+/*
+ ============================================
+ Function     : Kinematic_getPosition()
+ Parameter    :
+ Return Value : void
+ Description  :
+ ============================================
+ */
+void Kinematic_getPosition(double dTabTheta[4], double dPoseMat[4][4]){
+
+	// Define Value parameter
+	d1 = L_M0_M1;
+	a2 = L_M1_M2;
+	a3 = L_M2_M3;
+	d5 = L_M4_M5;
+
+	// Define Angles
+	t1 = dTabTheta[0] ;
+	t2 = dTabTheta[1] ;
+	t3 = dTabTheta[2] ;
+	t4 = dTabTheta[3] ;
+	t5 = dTabTheta[4] ;
+
+	// Init Matrix
+	initT1_0(T1_0);
+	initT2_1(T2_1);
+	initT3_2(T3_2);
+	initT4_3(T4_3);
+	initT5_4(T5_4);
+
+	// Get Position
+	Kinematic_multi(T1_0, T2_1, T2_0);
+	Kinematic_multi(T2_0, T3_2, T3_0);
+	Kinematic_multi(T3_0, T4_3, T4_0);
+	Kinematic_multi(T4_0, T5_4, T5_0);
+
+	// Display
+//	printf("\nDisplay T2_0 :");
+//	Kinematic_displayMatrix(T2_0);
+//
+//	printf("\nDisplay T3_0 :");
+//	Kinematic_displayMatrix(T3_0);
+//
+//	printf("\nDisplay T4_0 :");
+//	Kinematic_displayMatrix(T4_0);
+
+
+	// round Value
+	int i, j;
+	for(i = 0; i < 4 ; i++){
+		for(j = 0; j < 4; j++){
+			if(j == 3){
+				T5_0[i][j] = round(T5_0[i][j]);
+			}
+		}
+	}
+	printf("\nDisplay T5_0 :");
+	Kinematic_displayMatrix(T5_0);
+
+	// Matrix Copy
+	//int i;
+	for(i = 0; i<4; i++)
+	{
+		memcpy(&dPoseMat[i], &T5_0[i], sizeof(T5_0[i]));
+	}
+}
+
 
 /*
  ============================================
@@ -237,7 +304,11 @@ void Kinematic_displayMatrix(double m[4][4])
 	{
 		for(j=0;j<4;j++)
 		{
-			printf("%.2f  ",m[i][j]);
+			if(j == 3){
+				printf("%.2f  ", m[i][j]);
+			}else{
+				printf("%.2f  ", rad2deg(m[i][j]));
+			}
 		}
 		printf("\n");
 	}
